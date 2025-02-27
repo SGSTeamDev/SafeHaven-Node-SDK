@@ -1,0 +1,46 @@
+{
+  "name": "@specialman/safehaven",
+  "version": "1.0.0",
+  "description": "Node JS SDK for Safe Haven APIs",
+  "main": "app.js",
+  "directories": {
+    "lib": "lib",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "jest --runInBand --detectOpenHandles --watchAll",
+    "test-workflow": "jest --runInBand --detectOpenHandles",
+    "use": "eslint . && npm link && cd ../usage && npm link @specialman/safehaven && node script.js",
+    "pub": "npm publish --access=public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SGSTeamDev/SafeHaven-Node-SDK.git"
+  },
+  "author": "Special Man Global Solution LTD",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SGSTeamDev/SafeHaven-Node-SDK/issues"
+  },
+  "homepage": "https://github.com/SGSTeamDev/SafeHaven-Node-SDK#readme",
+  "dependencies": {
+    "axios": "^1.8.1",
+    "dotenv": "^8.6.0"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testPathIgnorePatterns": [
+      "<rootDir>/tests/example.test.js"
+    ],
+    "testTimeout": 100000,
+    "forceExit": true
+  },
+  "devDependencies": {
+    "eslint": "^8.56.0",
+    "jest": "^29.6.2",
+    "ts-jest": "^29.1.1"
+  }
+}
