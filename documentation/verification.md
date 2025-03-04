@@ -1,4 +1,4 @@
-# Verification Methods
+# Verification
 
 ## Initiate Verification
 
