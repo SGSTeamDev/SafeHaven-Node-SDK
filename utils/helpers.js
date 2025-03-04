@@ -1,9 +1,9 @@
 const helpers = {
-  sendResponse(status_code, message, data) {
+  sendResponse(statusCode, message, data = {}) {
     return {
-      status_code,
+      statusCode,
       message,
-      data: data ? data : undefined,
+      data,
     };
   },
 };
