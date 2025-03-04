@@ -14,29 +14,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 <!-- ## [version] - CHANGE LOG DATE -->
 
+[1.0.0] - 2025-03-04
+
 ### Added
 
-- New features go here in a bullet list
-
-### Changed
-
-- Changes to existing functionality go here in a bullet list
-
-### Deprecated
-
-- Mark features soon-to-be removed in a bullet list
-
-### Removed
-
-- Features that have been removed in a bullet list
-
-### Fixed
-
-- Bug fixes in a bullet list
-
-### Security
-
-- Changes/fixes related to security vulnerabilities in a bullet list
+- Authentication
+- Accounts
+- Verification
+- Transfers
 
 <!-- Example -->
 

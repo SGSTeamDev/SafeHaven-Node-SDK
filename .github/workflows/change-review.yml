@@ -1,0 +1,39 @@
+---
+name: Review changes on Dev (Commits/PRs)
+on:
+  push:
+    branches: ["dev"]
+  pull_request:
+    types:
+      - opened
+
+jobs:
+  code-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - uses: actions/checkout@v4
+
+      - name: "Cache node_modules"
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-v18-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-v18-
+
+      - name: Install Dependencies
+        run: |
+          npm install
+
+      - name: run unit tests
+        env:
+          CLIENT_ID: ${{ secrets.CLIENT_ID }}
+          CLIENT_ASSERTION: ${{ secrets.CLIENT_ASSERTION }}
+          DEBIT_ACCOUNT_NUMBER: ${{ secrets.DEBIT_ACCOUNT_NUMBER }}
+          CLIENT_ACCOUNT_ID: ${{ secrets.CLIENT_ACCOUNT_ID }}
+        run: npm run test-workflow

@@ -2,28 +2,65 @@
 
 <!--- FIXME: chnage below to name of your project! --->
 
-# `opensource-starter`
+# `Safe Haven NodeJS SDK`
 
 <!--- FIXME: Write short catchy description/tagline of project --->
 
-**Template for creating new open source repositories that follow Special Man Global Solution LTD open source guidelines**
+## Introduction
+
+This SDK simplifies the integration of Safe Haven’s APIs into your application, offering a seamless way to handle authentication, account management, verification, transfers, beneficiaries, and more. This guide provides a detailed overview of the available methods and best practices for effective implementation.
 
 </div>
 
-## TEMPLATE INSTRUCTIONS
+## Table of Content
 
-1. Create a new repository using this template.
-2. **Title:** Change the first line of this README to the name of your project.
-3. **Issue & PR Templates**: Review the files in [ISSUE_TEMPLATE](.github/ISSUE_TEMPLATE/) and [PULL_REQUEST_TEMPLATE](.github/PULL_REQUEST_TEMPLATE.md). Adapt them
-   to suit your needs, removing or re-wording any sections that don't make sense for your use case.
-4. **CHANGELOG.md:**
+1. [Requirements](#requirements)
+2. [Installation](#installation)
+3. [Setup](#setup)
+4. [Usage](#usage)
+5. [Contributing](#contributing)
+6. [License](#license)
 
-   - Keep Unreleased section at the top to track upcoming changes.
-   - At release time, move the Unreleased section changes into a new release version section.
-   - Keep to the format and use semantic version for logs.
-   - New change logs should come first after the Unrealeased section (see example).
+## Requirements
 
-5. **Cleanup:** Remove this section of the README and any unused files from the repo.
+- Safe Haven [OAuth2 Client ID](https://safehavenmfb.readme.io/reference/creating-an-app).
+- Safe Haven [OAuth2 Client Assertion](https://safehavenmfb.readme.io/reference/signing-your-client-assertion).
+- Node JS v18 or higher.
+
+## Installation
+
+```sh
+npm install @specialman/safehaven
+```
+
+## Setup
+
+When initialized, the SDK authenticates using OAuth2 client credentials to obtain an access token, refresh token, and an IBS Client ID. These credentials are automatically included in the request headers for secure communication with Safe Haven’s API.
+
+```javascript
+const safeHavenSDK = require("@specialman/safehaven");
+
+const safe_haven = safeHavenSDK({
+  client_id: process.env.CLIENT_ID,
+  client_assertion: process.env.CLIENT_ASSERTION,
+  env: "sandbox", // or "production"
+})
+  .then((sdk) => sdk)
+  .catch((error) => {
+    console.error("SDK Initialization Failed:", error);
+  });
+```
+
+# Usage
+
+1. [Responses](documentation/response.md)
+2. [Authentication](documentation/authentication.md)
+3. [Accounts](documentation/accounts.md)
+4. [Verification](documentation/verification.md)
+5. [Transfers](documentation/transfers.md)
+6. [Beneficiaries](documentation/beneficiaries.md)
+
+Refer to the Safe Haven [API Reference](https://safehavenmfb.readme.io/) for detailed information on the parameters and options available for each method or request.
 
 ## Contributing
 
