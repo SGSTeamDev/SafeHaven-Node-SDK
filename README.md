@@ -36,6 +36,7 @@ npm install @specialman/safehaven
 ## Setup
 
 When initialized, the SDK authenticates using OAuth2 client credentials to obtain an access token, refresh token, and an IBS Client ID. These credentials are automatically included in the request headers for secure communication with Safe Haven’s API.
+The SDK automatically refresh token (every 30 mins) before expiry.
 
 ```javascript
 const safeHavenSDK = require("@specialman/safehaven");
@@ -54,11 +55,10 @@ const safe_haven = safeHavenSDK({
 # Usage
 
 1. [Responses](documentation/response.md)
-2. [Authentication](documentation/authentication.md)
-3. [Accounts](documentation/accounts.md)
-4. [Verification](documentation/verification.md)
-5. [Transfers](documentation/transfers.md)
-6. [Beneficiaries](documentation/beneficiaries.md)
+2. [Accounts](documentation/accounts.md)
+3. [Verification](documentation/verification.md)
+4. [Transfers](documentation/transfers.md)
+5. [Beneficiaries](documentation/beneficiaries.md)
 
 Refer to the Safe Haven [API Reference](https://safehavenmfb.readme.io/) for detailed information on the parameters and options available for each method or request.
 
