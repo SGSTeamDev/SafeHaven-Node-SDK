@@ -1,6 +1,6 @@
 {
   "name": "@specialman/safehaven",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Node JS SDK for Safe Haven MFB APIs",
   "main": "app.js",
   "directories": {
