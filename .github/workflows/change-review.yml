@@ -32,5 +32,8 @@ jobs:
 
       - name: run unit tests
         env:
-          KEY: ${{ secrets.KEY }}
+          CLIENT_ID: ${{ secrets.CLIENT_ID }}
+          CLIENT_ASSERTION: ${{ secrets.CLIENT_ASSERTION }}
+          DEBIT_ACCOUNT_NUMBER: ${{ secrets.DEBIT_ACCOUNT_NUMBER }}
+          CLIENT_ACCOUNT_ID: ${{ secrets.CLIENT_ACCOUNT_ID }}
         run: npm run test-workflow

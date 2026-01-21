@@ -1,6 +1,6 @@
 {
   "name": "@specialman/safehaven",
-  "version": "1.0.3",
+  "version": "1.0.2",
   "description": "Node JS SDK for Safe Haven MFB APIs",
   "main": "app.js",
   "directories": {
@@ -17,14 +17,22 @@
     "type": "git",
     "url": "git+https://github.com/SGSTeamDev/SafeHaven-Node-SDK.git"
   },
-  "author": "Special Man Global Solution LTD\"",
+  "author": "Special Man Global Solution LTD",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/SGSTeamDev/SafeHaven-Node-SDK/issues"
   },
   "homepage": "https://github.com/SGSTeamDev/SafeHaven-Node-SDK#readme",
+  "keywords": [
+    "safehaven",
+    "mfb",
+    "accounts",
+    "transfers",
+    "verifications",
+    "beneficiaries"
+  ],
   "dependencies": {
-    "axios": "^1.13.2",
+    "axios": "^1.8.1",
     "dotenv": "^8.6.0"
   },
   "jest": {
