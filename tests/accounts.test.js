@@ -23,7 +23,7 @@ describe("ACCOUNTS", () => {
             page: 0,
             limit: 100,
             isSubAccount: true,
-          })
+          }),
         )
         .then((response) => response)
         .catch((error) => console.error(error));
@@ -118,7 +118,7 @@ describe("ACCOUNTS", () => {
               emailNotification: true,
               emailMonthlyStatement: true,
             },
-          })
+          }),
         )
         .then((response) => response)
         .catch((error) => error);
@@ -137,7 +137,7 @@ describe("ACCOUNTS", () => {
           sdk.update({
             account_id: "invalid_id",
             notificationSettings: {},
-          })
+          }),
         )
         .then((response) => response)
         .catch((error) => error);
@@ -160,14 +160,14 @@ describe("ACCOUNTS", () => {
             phoneNumber: "+2348112345678",
             emailAddress: "jane.doe@yopmail.com",
             externalReference: `EXT_REF ${Math.floor(
-              Math.random() * 1000000000
+              Math.random() * 1000000000,
             )}`,
             identityType: "NIN",
             identityNumber: "22222222222",
             identityId: "67c5d5ba6f78ac4c885abdfb",
             otp: "123456",
             metadata: { test: true },
-          })
+          }),
         )
         .then((response) => response)
         .catch((error) => error);
@@ -205,10 +205,10 @@ describe("ACCOUNTS", () => {
             phoneNumber: "+2348112345679",
             emailAddress: "mat.doe@yopmail.com",
             externalReference: `EXT_REF ${Math.floor(
-              Math.random() * 1000000000
+              Math.random() * 1000000000,
             )}`,
             metadata: { updated: true },
-          })
+          }),
         )
         .then((response) => response)
         .catch((error) => error);
@@ -227,7 +227,7 @@ describe("ACCOUNTS", () => {
           sdk.updateSubAccount({
             account_id: "invalid_id",
             metadata: { updated: false },
-          })
+          }),
         )
         .then((response) => response)
         .catch((error) => error);
@@ -253,7 +253,7 @@ describe("ACCOUNTS", () => {
             fromDate: "2025-03-03",
             toDate: "2025-12-31",
             type: "Credit",
-          })
+          }),
         )
         .then((response) => response)
         .catch((error) => error);
@@ -273,7 +273,7 @@ describe("ACCOUNTS", () => {
             account_id: "invalid_id",
             page: 0,
             limit: 25,
-          })
+          }),
         )
         .then((response) => response)
         .catch((error) => error);

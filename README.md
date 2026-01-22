@@ -14,12 +14,15 @@ This SDK simplifies the integration of Safe Haven’s APIs into your application
 
 ## Table of Content
 
-1. [Requirements](#requirements)
-2. [Installation](#installation)
-3. [Setup](#setup)
-4. [Usage](#usage)
-5. [Contributing](#contributing)
-6. [License](#license)
+- [`Safe Haven NodeJS SDK`](#safe-haven-nodejs-sdk)
+  - [Introduction](#introduction)
+  - [Table of Content](#table-of-content)
+  - [Requirements](#requirements)
+  - [Installation](#installation)
+  - [Setup](#setup)
+- [Usage](#usage)
+  - [Contributing](#contributing)
+    - [License](#license)
 
 ## Requirements
 
@@ -56,9 +59,10 @@ const safe_haven = safeHavenSDK({
 
 1. [Responses](documentation/response.md)
 2. [Accounts](documentation/accounts.md)
-3. [Verification](documentation/verification.md)
-4. [Transfers](documentation/transfers.md)
-5. [Beneficiaries](documentation/beneficiaries.md)
+3. [Virtual Accounts](documentation/virtualAccounts.md)
+4. [Verification](documentation/verification.md)
+5. [Transfers](documentation/transfers.md)
+6. [Beneficiaries](documentation/beneficiaries.md)
 
 Refer to the Safe Haven [API Reference](https://safehavenmfb.readme.io/) for detailed information on the parameters and options available for each method or request.
 

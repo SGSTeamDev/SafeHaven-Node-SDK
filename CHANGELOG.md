@@ -33,6 +33,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Token expiry
 
+[1.0.3] - 2026-01-22
+
+### Added
+
+- Virtual account
+
 <!-- Example -->
 
 <!-- ## [Unreleased] - Release Date

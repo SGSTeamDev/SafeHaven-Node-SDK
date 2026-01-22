@@ -12,7 +12,7 @@ const listAccounts = () => {
         page: 0,
         limit: 100,
         isSubAccount: true,
-      })
+      }),
     )
     .then((response) => console.log(response))
     .catch((error) => console.error(error));
@@ -44,7 +44,7 @@ const createAccount = () => {
         accountType: "Savings",
         suffix: `Wallet ${Math.floor(Math.random() * 1000000000)}`,
         metadata: {},
-      })
+      }),
     )
     .then((response) => console.log(response))
     .catch((error) => console.error(error));
@@ -67,7 +67,7 @@ const updateAccount = () => {
           emailNotification: true,
           emailMonthlyStatement: true,
         },
-      })
+      }),
     )
     .then((response) => console.log(response))
     .catch((error) => console.error(error));
@@ -93,7 +93,7 @@ const createIndividualSubAccount = () => {
         metadata: {
           test: true,
         },
-      })
+      }),
     )
     .then((response) => console.log(response))
     .catch((error) => console.error(error));
@@ -116,7 +116,7 @@ const updateSubAccount = () => {
         metadata: {
           updated: true,
         },
-      })
+      }),
     )
     .then((response) => console.log(response))
     .catch((error) => console.error(error));
@@ -138,7 +138,7 @@ const listAccountStatement = () => {
         fromDate: "2025-03-03",
         toDate: "2025-12-31",
         type: "Credit",
-      })
+      }),
     )
     .then((response) => console.log(response))
     .catch((error) => console.error(error));
