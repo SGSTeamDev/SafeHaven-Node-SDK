@@ -78,7 +78,8 @@ Release requirements:
 - Update `package.json` and `package-lock.json` to the same version.
 - Use a dated Keep a Changelog release heading: `## [x.y.z] - YYYY-MM-DD`.
 - Run `npm run verify`, `npm run validate-release`, and `npm pack --dry-run`.
-- Publish only from a reviewed release commit using a scoped npm credential with the minimum required access.
+- Stage releases from a reviewed release commit with `npm stage publish`; a maintainer must review and approve the staged package on npm before it becomes public.
+- Use a scoped npm credential with the minimum required access and keep `NPM_TOKEN` only in GitHub Actions secrets.
 - Never put npm tokens, provider credentials, OTPs, or `.npmrc` files in the repository.
 
 ## Git workflow
