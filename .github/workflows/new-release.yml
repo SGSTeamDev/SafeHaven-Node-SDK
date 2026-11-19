@@ -5,6 +5,7 @@ permissions:
 on:
   release:
     types: [created]
+  workflow_dispatch:
 
 jobs:
   validate-release:
@@ -24,7 +25,7 @@ jobs:
 
       - name: Verify release metadata
         env:
-          GITHUB_REF_NAME: ${{ github.event.release.tag_name }}
+          GITHUB_REF_NAME: ${{ github.event.release.tag_name || github.ref_name }}
         run: npm run validate-release
 
       - name: Verify package
