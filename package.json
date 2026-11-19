@@ -1,6 +1,6 @@
 {
   "name": "@specialman/safehaven",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Node JS SDK for Safe Haven MFB APIs",
   "main": "app.js",
   "directories": {
@@ -8,8 +8,15 @@
     "test": "tests"
   },
   "scripts": {
+    "lint": "eslint .",
     "test": "jest --runInBand --detectOpenHandles --watchAll",
+    "test-local": "jest --runInBand --detectOpenHandles tests/accountModes.test.js tests/authErrors.test.js tests/baseErrors.test.js",
     "test-workflow": "jest --runInBand --detectOpenHandles",
+    "verify": "npm run lint && npm run test-local",
+    "validate-repository": "node scripts/validate-repository.js",
+    "validate-release": "node scripts/validate-release.js",
+    "setup-hooks": "git config core.hooksPath .githooks && chmod +x .githooks/pre-commit .githooks/pre-push",
+    "prepublishOnly": "npm run verify && npm run validate-repository && npm run validate-release",
     "use": "eslint . && npm link && cd ../usage && npm link @specialman/safehaven && node script.js",
     "pub": "npm publish --access=public"
   },

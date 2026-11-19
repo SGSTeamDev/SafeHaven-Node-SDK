@@ -2,6 +2,14 @@
 
 Welcome! This project is created by the team at [Special Man Global Solution LTD](https://specialmansolution.com/). We're glad you're interested in contributing!
 
+Before making changes, read the repository [development guide](AGENT.md). Enable the versioned local checks with:
+
+```bash
+npm run setup-hooks
+```
+
+The hooks run lint, deterministic tests, repository validation, and release checks where applicable. CI remains the authoritative gate and runs the complete integration suite.
+
 ## **Have a Question?**
 
 If you have any inquiries, ideas, or wish to collaborate, feel free to reach out to us via email at engineering@specialmansolution.com.
@@ -56,7 +64,7 @@ Browse through our open issues and pick one that interests you. Feel free to com
 4. For functionality updates, document how to use the new feature.
 5. Use clear and meaningful commit messages.
 6. Complete all sections of the pull request template before submitting.
-7. Submit your pull request against the `dev` branch.
+7. Submit your pull request against the `main` branch.
 8. A maintainer will review your submission and may request changes.
 
 For guidance on creating a pull request, visit [GitHub’s documentation](https://help.github.com/en/articles/creating-a-pull-request-from-a-fork).

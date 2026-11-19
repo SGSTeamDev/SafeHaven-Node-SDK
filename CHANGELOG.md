@@ -14,7 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 <!-- ## [version] - CHANGE LOG DATE -->
 
-[1.0.0] - 2025-03-04
+## [1.0.0] - 2025-03-04
 
 ### Added
 
@@ -23,7 +23,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Verification
 - Transfers
 
-[1.0.1] - 2025-05-08
+## [1.0.1] - 2025-05-08
 
 ### Added
 
@@ -33,11 +33,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Token expiry
 
-[1.0.3] - 2026-01-22
+## [1.0.3] - 2026-01-22
 
 ### Added
 
 - Virtual account
+
+## [1.0.4] - 2026-11-19
+
+### Added
+
+- Explicit OTP-required and vID bypass modes for sub-account creation.
+
+### Changed
+
+- Preserve Safe Haven provider response details on SDK errors.
 
 <!-- Example -->
 
