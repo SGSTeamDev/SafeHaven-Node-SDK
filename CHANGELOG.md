@@ -5,14 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-<!-- Keep Unreleased section at the top to track upcoming changes. -->
+## [Unreleased]
 
-## [Unreleased] - Release Date
+## [1.0.5] - 2026-11-19
 
-<!-- ## [version] - Date -->
-<!-- At release time, move the Unreleased section changes into a new release version section. -->
+### Changed
 
-<!-- ## [version] - CHANGE LOG DATE -->
+- Bound and redact provider error diagnostics while preserving actionable Safe Haven status and request information.
+- Stage npm releases for maintainer approval instead of publishing directly from CI.
+
+### Security
+
+- Updated vulnerable transitive dependencies and added repository secret checks.
 
 ## [1.0.0] - 2025-03-04
 
