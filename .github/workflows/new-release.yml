@@ -1,41 +1,65 @@
 ---
 name: Publish new release to npmjs
+permissions:
+  contents: read
 on:
   release:
     types: [created]
 
 jobs:
-  check-readme-and-changelog:
+  validate-release:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
 
-      - name: Check for README and CHANGELOG changes
-        run: |
-          if ! git diff --quiet HEAD~ HEAD -- README.md CHANGELOG.md; then
-            echo "README and/or CHANGELOG have been modified. Proceeding with deployment."
-          else
-            echo "README and/or CHANGELOG have not been modified. Terminating deployment."
-            exit 1
-          fi
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 22.14.0
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Verify release metadata
+        env:
+          GITHUB_REF_NAME: ${{ github.event.release.tag_name }}
+        run: npm run validate-release
+
+      - name: Verify package
+        run: npm run verify
+
+      - name: Run integration tests
+        env:
+          CLIENT_ID: ${{ secrets.CLIENT_ID }}
+          CLIENT_ASSERTION: ${{ secrets.CLIENT_ASSERTION }}
+          DEBIT_ACCOUNT_NUMBER: ${{ secrets.DEBIT_ACCOUNT_NUMBER }}
+          CLIENT_ACCOUNT_ID: ${{ secrets.CLIENT_ACCOUNT_ID }}
+        run: npm run test-workflow
+
+      - name: Check package contents
+        run: npm pack --dry-run
 
   publish:
-    needs: check-readme-and-changelog
+    needs: validate-release
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
 
       - name: Setup Node Engine
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
-          node-version: 18
+          node-version: 22.14.0
           registry-url: https://registry.npmjs.org/
 
       - name: Install Node dependencies
         run: npm ci
 
-      - run: npm publish
+      - name: Stage package for npm approval
+        run: npm stage publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

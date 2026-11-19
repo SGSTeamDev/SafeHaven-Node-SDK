@@ -78,6 +78,11 @@ const updateAccount = () => {
 
 Creates an individual sub-account.
 
+For Safe Haven's optional OTP bypass, set `otpMode` to `bypass` and provide
+the valid Safe Haven verification `identityId`. The SDK sends `identityType`
+as `vID` and does not send an `otp` field. This does not call identity
+verification initiation; callers must already have a valid `identityId`.
+
 ```javascript
 const createIndividualSubAccount = () => {
   safe_haven
@@ -86,10 +91,10 @@ const createIndividualSubAccount = () => {
         phoneNumber: "+2348112345678",
         emailAddress: "jane.doe@yopmail.com",
         externalReference: `EXT_REF ${Math.floor(Math.random() * 1000000000)}`,
-        identityType: "NIN",
+        otpMode: "bypass",
+        identityType: "vID",
         identityNumber: "22222222222",
         identityId: "67c5d5ba6f78ac4c885abdfc",
-        otp: "123456",
         metadata: {
           test: true,
         },

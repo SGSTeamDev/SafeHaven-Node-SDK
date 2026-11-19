@@ -1,25 +1,29 @@
 ---
 name: Review changes on Dev (Commits/PRs)
+permissions:
+  contents: read
 on:
   push:
     branches: ["dev"]
   pull_request:
-    types:
-      - opened
 
 jobs:
   code-check:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: 18
 
       - uses: actions/checkout@v4
 
       - name: "Cache node_modules"
-        uses: actions/cache@v3
+        uses: actions/cache@6f8efc29b200d32929f49075959781ed54ec270c
         with:
           path: ~/.npm
           key: ${{ runner.os }}-node-v18-${{ hashFiles('**/package-lock.json') }}
@@ -27,10 +31,33 @@ jobs:
             ${{ runner.os }}-node-v18-
 
       - name: Install Dependencies
-        run: |
-          npm install
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
 
       - name: run unit tests
+        run: npm run test-local
+
+      - name: Validate repository
+        run: npm run validate-repository
+
+  integration-check:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 18
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Run integration tests
         env:
           CLIENT_ID: ${{ secrets.CLIENT_ID }}
           CLIENT_ASSERTION: ${{ secrets.CLIENT_ASSERTION }}

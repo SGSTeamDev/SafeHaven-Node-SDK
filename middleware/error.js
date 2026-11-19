@@ -32,7 +32,13 @@ const STATUS_DESCRIPTION = {
 };
 
 class AppError extends Error {
-  constructor(statusCode, message = "", error = "", error_description = "") {
+  constructor(
+    statusCode,
+    message = "",
+    error = "",
+    error_description = "",
+    provider_response = null,
+  ) {
     super(message);
 
     this.statusCode = statusCode;
@@ -51,8 +57,10 @@ class AppError extends Error {
         STATUS_DESCRIPTION[statusCode].description) ||
       "";
 
+    if (provider_response) this.provider_response = provider_response;
+
     // If status code is 500 or above, set default server error messages
-    if (statusCode >= 500) {
+    if (statusCode >= 500 && !error && !error_description) {
       this.error = "Server Error";
       this.error_description = "Something went wrong.";
     }
@@ -67,6 +75,7 @@ const handleError = (err) => {
     message: err.message || "",
     error: err.error || "",
     error_description: err.error_description || "",
+    ...(err.provider_response ? { provider_response: err.provider_response } : {}),
   };
 };
 

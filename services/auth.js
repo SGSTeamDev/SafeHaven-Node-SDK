@@ -2,6 +2,7 @@ const querystring = require("querystring");
 const axios = require("axios");
 const { AppError } = require("../middleware/error.js");
 const { setTimeout } = require("timers/promises");
+const { safeProviderText } = require("../lib/providerSafety");
 
 class Auth {
   constructor({ client_id, client_assertion, env = "sandbox" }) {
@@ -159,8 +160,8 @@ class Auth {
     const errData = error.response?.data || {};
     return new AppError(
       errData.statusCode || error.response?.status || 500,
-      errData.message || "Request failed",
-      errData.error || "request_error"
+      safeProviderText(errData.message) || "Request failed",
+      safeProviderText(errData.error) || "request_error"
     );
   }
 
